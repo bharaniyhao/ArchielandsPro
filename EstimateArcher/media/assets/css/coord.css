@@ -1,0 +1,89 @@
+.listsearch{
+	margin-bottom: 9px !important;
+}
+.pager input.page {
+	width: 2em !important;
+	
+}
+.pager input.page {
+	width: 2em !important;
+}
+.pager .arrow {
+	margin: 0 3px;
+	vertical-align: middle;
+}
+.pager .arrowing{
+	height:13px; width:13px;
+	display:inline-table;
+	 margin: 0 3px;
+    vertical-align: middle;
+	}
+.short{
+	width:30px !important;
+	text-align:center;
+	height:28px;}
+
+.short2{width:250px !important; height:35px;}
+
+#searchdash{
+		background: url(search-white.png) no-repeat 10px 6px #fefefe;
+		border: 1px solid #d1d1d1;
+		font: bold 12px Arial,Helvetica,Sans-serif;
+		color: #3e3e3e;
+		width: 550px;
+		padding: 8px 15px 8px 35px;
+		margin-bottom: 20px;
+		-webkit-border-radius: 20px;
+		-moz-border-radius: 20px;
+		border-radius: 20px;
+		text-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+		-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+		-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+		-webkit-transition: all 0.7s ease 0s;
+		-moz-transition: all 0.7s ease 0s;
+		-o-transition: all 0.7s ease 0s;
+		transition: all 0.7s ease 0s;
+	}
+.icon-smalldash{
+	width:180px; 
+	height:180px; 
+	margin-top:4px; 
+	padding-left: 10px; 
+	padding-top:7px; 
+	padding-bottom:5px; 
+	float:left; 
+	margin-left: 20px;
+	align-items: center;
+}
+
+.label-iconsmalldash{
+	padding-left:3px; padding-top:10px; color:#5e5e5e; font-size:15px;
+}
+
+.innerheader-spacing{
+    color: #616161;
+	min-height:30px;
+
+}
+
+.editbtn{
+	color:#5a0
+}
+
+.deletebtn{
+	color:#f00
+}
+
+.workingtable{
+    display: none;;
+}
+
+.pop-wraper{
+	margin-left: 50px !important;
+	width: 90%; 
+	height:auto;
+}
+
+
+
