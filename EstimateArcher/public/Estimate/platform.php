@@ -7,7 +7,7 @@ switch (strtolower($option)) {
         break;
 
     case md5("category"):
-        include("category/platform.php");
+        include("approve/platform.php");
         break;
         // case md5("estimate"):
         // include("estimate/platform.php");

@@ -3,10 +3,10 @@
 ini_set('display_errors', 1);
 ?>
       <div class="page-heading">
-    <h1 class="page-title">ESTIMATE List </h1>
+    <h1 class="page-title">Estimate Lists </h1>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.php?pg=dashboard">Home</a></li>
-        <li class="breadcrumb-item active">ESTIMATE</li>
+        <li class="breadcrumb-item active">List</li>
     </ol>
 </div>
 <div class="page-content fade-in-up">
@@ -98,6 +98,7 @@ ini_set('display_errors', 1);
 <button type="submit" class="btn btn-default btn-sm btn-info" data-toggle="tooltip" data-original-title="Edit" onclick="document.getElementById(\'keys\').value = \'' . $val['estimateCode'] . '\';document.getElementById(\'target\').value = \'details\';document.getElementById(\'viewpage\').value = \'Findetails\';">
                                     <i class="fa fa-eye"></i> View Details
                                 </button>
+
 <button type="submit" class="btn btn-default btn-sm btn-info" data-toggle="tooltip" data-original-title="Edit" onclick="document.getElementById(\'keys\').value = \'' . $val['estimateCode'] . '\';document.getElementById(\'target\').value = \'update\';document.getElementById(\'viewpage\').value = \'Findetails\';">
     <i class="fa fa-pencil"></i> Update Estimate
 </button>
@@ -105,10 +106,7 @@ ini_set('display_errors', 1);
 
 <button type="button" class="btn btn-danger text-white" role="button" data-toggle="tooltip" data-original-title="Terminate" onclick="showConfirmationAlert(\'warning\', \'Are you sure you want to Delete this Estimate?\', \'Terminate Estimate\' , \'btn-success\' ,\'Yes\' ,function(){ document.getElementById(\'view\').value=\'\' ;document.getElementById(\'keys\').value = \'' . $val['estimateCode'] . '\';document.getElementById(\'viewpage\').value=\'deleteuser\';document.myform.submit(); })">
                                     <i class="fa fa-trash"></i> Delete
-                                </button>
-                                
-
-                
+                                </button>            
                             </div>
                         </td>';
                 }

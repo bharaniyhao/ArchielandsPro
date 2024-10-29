@@ -76,9 +76,9 @@
                 <input type="hidden" value="<?php echo !empty($keys)
                     ? $keys
                     : ""; ?>" id="viewpage" name="viewpage" />
-                <input type="hidden" value="<?php echo !empty($keys)
+                <!-- <input type="hidden" value="<php echo !empty($keys)
                     ? $keys
-                    : ""; ?>" name="keys" id="keys" />
+                    : ""; ?>" name="keys" id="keys" /> -->
                 <input type="hidden" value="" name="pwd" id="pwd" />
                 <input type="hidden" value=""  name="action_search" id="action_search"  />
                 <input type="hidden" name="imag_url" id="imag_url" accept="image/*" >
@@ -120,7 +120,7 @@
                         include "monitoring/platform.php";
                         break;
                     case md5("assessment"):
-                        include "bookings/platform.php";
+                        include "mangestimate/platform.php";
                         break;
                     case md5("channel"):
                         include "communication/platform.php";

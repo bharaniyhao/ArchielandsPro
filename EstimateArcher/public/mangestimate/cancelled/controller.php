@@ -168,11 +168,11 @@ case "save":
 //Get all users
 if (empty($fdsearch)) {
 
-$query = "SELECT * FROM Estimate WHERE Estimatestatus IN ('1', '2') ORDER BY id DESC";
+$query = "SELECT * FROM Estimate WHERE Estimatestatus IN ( '0') ORDER BY id DESC";
 	$input = array();
 } else {
 
-	$query = "SELECT * FROM Estimate WHERE Estimatestatus IN ('1','2') AND ( CustomerName LIKE " . $sql->Param('a') . " OR invoiceNumber LIKE " . $sql->Param('b')  . " ) ORDER BY id  DESC";
+	$query = "SELECT * FROM Estimate WHERE Estimatestatus IN ('0') AND ( CustomerName LIKE " . $sql->Param('a') . " OR invoiceNumber LIKE " . $sql->Param('b')  . " ) ORDER BY id  DESC";
 	$input = array($fdsearch . "%", $fdsearch . "%");
 }
 
