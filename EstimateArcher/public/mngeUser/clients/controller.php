@@ -82,11 +82,11 @@ switch($viewpage){
 //Get all users
 if (empty($fdsearch)) {
 
-	$query = "SELECT * FROM treatmentList WHERE treatmentStatus IN ('1','2') ORDER BY treatment_name ASC";
+	$query = "SELECT * FROM Clients WHERE clients_status	 IN ('1','2','0') ORDER BY client_id ASC";
 	$input = array();
 } else {
 
-	$query = "SELECT * FROM treatmentList WHERE treatmentStatus IN ('1','2') AND ( treatment_name LIKE " . $sql->Param('a') . " OR treatment_name LIKE " . $sql->Param('b')  . " ) ORDER BY treatment_name ASC";
+	$query = "SELECT * FROM Clients WHERE clients_status	 IN ('1','2','0') AND ( first_name LIKE " . $sql->Param('a') . " OR property_interest LIKE " . $sql->Param('b')  . " ) ORDER BY client_id ASC";
 	$input = array($fdsearch . "%", $fdsearch . "%", $fdsearch . "%");
 }
 

@@ -140,8 +140,6 @@ case "save":
     }
     break;
 
-
-
 	case "deleteuser":
         if(!empty($keys)){
 
@@ -150,17 +148,17 @@ case "save":
 			$EstimateName = $obj->CUSTOMERNAME ;
                     print_r($keys);
 
-			
 			$sql->Execute("UPDATE Estimate SET Estimatestatus = '0' WHERE estimateCode = ".$sql->Param('f')." ", array($keys));
 			print $sql->ErrorMsg();	
 
 			$msg = "Estimate updated successfully.";
 			$status = "success";
 
-			$activity = 'User with username '.$CustomerName.' deleted ';
-			$engine->setEventLog("006",$activity);
+			// $activity = 'User with username '.$EstimateName.' deleted ';
+			// $engine->setEventLog("006",$activity);
 		}
 	break;
+
 	case "reset":
 		$fdsearch = "";
 	break;

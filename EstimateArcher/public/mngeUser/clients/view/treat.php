@@ -3,10 +3,10 @@
 ini_set('display_errors', 1);
 ?>
       <div class="page-heading">
-    <h1 class="page-title">Enquire List </h1>
+    <h1 class="page-title">Clients List </h1>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.php?pg=dashboard">Home</a></li>
-        <li class="breadcrumb-item active">Treatment</li>
+        <li class="breadcrumb-item active">Clients</li>
     </ol>
 </div>
 <div class="page-content fade-in-up">
@@ -40,7 +40,7 @@ ini_set('display_errors', 1);
                         </div>
                     </div>
                     <div class="col-sm-3 pagination-right">
-                        <button type="submit" onclick="document.getElementById('action_search').value='';document.getElementById('view').value='treat'; document.getElementById('viewpage').value='';document.myform.submit();" class="btn btn-success btn-square"> <i class="fa fa-medkit"></i> Add Treatment </button>
+                        <button type="submit" onclick="document.getElementById('action_search').value='';document.getElementById('view').value='treat'; document.getElementById('viewpage').value='';document.myform.submit();" class="btn btn-success btn-square"> <i class="fa fa-medkit"></i> New clients_status </button>
                     </div>
                     
                 </div>
@@ -51,9 +51,9 @@ ini_set('display_errors', 1);
             <tr>
                 <th> # </th>
                 <th> Patients ID </th>
-                <th> Treatment name </th> 
-                <th> Description </th> 
-                <th> Treatment Date </th>
+                <th> clients Name </th> 
+                <th> Phone Number </th> 
+                <th> Email </th>
                 <th> Status </th>
                 <th> Actions </th>
             </tr>
@@ -71,22 +71,22 @@ ini_set('display_errors', 1);
                       $status_name = '';
                     $status_color = '';
 
-                    if ($val['treatmentStatus'] == 1) {
+                    if ($val['clients_status'] == 1) {
                         $status_name = 'Successfully';
                         $status_color = 'success';
-                    } elseif ($val['treatmentStatus'] == 2) {
+                    } elseif ($val['clients_status'] == 2) {
                         $status_name = 'Pending';
                         $status_color = 'info';
-                    } elseif ($val['treatmentStatus'] == 0) {
+                    } elseif ($val['clients_status'] == 0) {
                         $status_name = 'Disable';
                         $status_color = 'danger';
                     }
                     echo '<tr>
                         <td>'.$num++.'</td>
                         <td>'.$val['patient_id'].'</td>
-                        <td>'.$val['treatment_name'].' '.$val['treatment_name'].'</td>
-                        <td>'.$val['treatment_description'].'</td>
-                        <td>'.$val['treatment_date'].'</td>
+                        <td>'.$val['first_name'].' '.$val['last_name'].'</td>
+                        <td>'.$val['phone_number'].'</td>
+                        <td>'.$val['email'].'</td>
                         <td><span class="badge badge-' . $status_color . '">' . $status_name . '</span></td>
                         <td>
                             <div align="center">

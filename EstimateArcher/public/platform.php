@@ -108,9 +108,9 @@
                         include "Estimate/platform.php";
                         break;
                     case md5("account"):
-                        include "account/platform.php";
+                        include "financial/platform.php";
                         break;
-                    case md5("treatment"):
+                    case md5("manageusers"):
                         include "mngeUser/platform.php";
                         break;
                     case md5("documents"):
