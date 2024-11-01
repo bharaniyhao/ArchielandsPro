@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-  <?php
+  <!-- <php --
 // $actorid = $session->get('userid');
 
 // $stmt = $sql->Execute($sql->Prepare("SELECT * FROM tofiepa_users  WHERE USR_CODE = " . $sql->Param('a') . " "), array($actorid));
 // $objuser = $stmt->FetchNextObject();
 // $username = $objuser->USR_OTHERNAME . " " . $objuser->USR_SURNAME;
-?>
-
+// ?>
+-->
 <html>
 
 <head>
@@ -16,15 +16,17 @@
     <title> ARCHER GROUP | Dashboard</title>
     <!-- GLOBAL MAINLY STYLES-->
 
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+zP1t69Jw7ib57swWA+79jG16a5PapKVXCbHIu5" crossorigin="anonymous"> -->
+    <!-- Bootstrap Select CSS -->
+    <link href="media/assets/css/bootstrap-s/dist/css/bootstrap-select.css" rel="stylesheet">
+    <link href="media/assets/css/bootstrap-s/dist/css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="media/assets/css/bootstrap-s/dist/css/bootstrap-select.css.map" rel="stylesheet">
 
-<!-- 
+<script type="text/javascript" src="media/assets/js/jquery.min.js"></script>
+
+    <!-- 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
     <link href="media/assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <script type="text/javascript" src="media/assets/js/jquery.min.js"></script>
-
     <link href="media/assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="media/assets/vendors/line-awesome/css/line-awesome.min.css" rel="stylesheet" />
     <link href="media/assets/vendors/themify-icons/css/themify-icons.css" rel="stylesheet" />
@@ -48,47 +50,24 @@
 
 <body class="fixed-navbar">
     <div class="page-wrapper">
-        <?php include "patials/header.php"; ?>
+        <?php include('patials/header.php'); ?>
         <!-- START SIDEBAR-->
-        <?php include "patials/sidebar.php"; ?>
+        <?php include('patials/sidebar.php'); ?>
         <!-- END SIDEBAR-->
         <div class="wrapper content-wrapper">
 
                <form name="myform" id="myform" method="post" action="#" data-toggle="validator" role="form" enctype="multipart/form-data" autocomplete="off">
-                <!-- <input type="hidden" value="<php echo $keys; ?>" name="keys" id="keys" /> -->
-                      <!-- <input type="hidden" value="" name="keys" id="keys" />  -->
-                <!-- <input type="hidden" value="<?php echo $photo; ?>" name="img" id="img" /> -->
-                <!-- <input type="hidden" value="<?php echo $photo2; ?>" name="imgs" id="imgs" /> -->
-                 <!-- <input type="text" value="" name="viewpage" id="viewpage" />
-    <input type="text" value="" name="target" id="target" /> -->
-    <input type="hidden" value="" name="monthinput" id="monthinput" />
-                <input type="hidden" name="status" id="status" />
-                <input type="hidden" name="fromdate" id="fromdate" />
-                <input type="hidden" name="todate" id="todate" />
-    <input type="hidden" value="" name="ukeys" id="ukeys" />
-    <input type="hidden" value="" name="yearinput" id="yearinput" />
-    <input type="hidden" value="" name="monthinput" id="monthinput" />
-                <input type="hidden" name="nstatus" id="nstatus" />
-                <input type="hidden" name="nfromdate" id="nfromdate" />
-                <input type="hidden" name="ntodate" id="ntodate" />
+                
+                <input type="hidden" name="imgs" id="imgs" accept="image/*" >
+
                 <input type="hidden" value="" id="view" name="view" />
                 <input type="hidden" value="" id="target" name="target" />
-                <input type="hidden" value="<?php echo !empty($keys)
-                    ? $keys
-                    : ""; ?>" id="viewpage" name="viewpage" />
-                <!-- <input type="hidden" value="<php echo !empty($keys)
-                    ? $keys
-                    : ""; ?>" name="keys" id="keys" /> -->
-                <input type="hidden" value="" name="pwd" id="pwd" />
+                <input type="hidden" value="<?php echo (!empty($keys) ? $keys : ''); ?>" id="viewpage" name="viewpage" />
+                <input type="hidden" value="<?php echo (!empty($keys) ? $keys : ''); ?>" name="keys" id="keys" />                
+                <input type="hidden" value="" name="pwd" id="pwd" /> 
                 <input type="hidden" value=""  name="action_search" id="action_search"  />
-                <input type="hidden" name="imag_url" id="imag_url" accept="image/*" >
-
-                <input type="hidden" value="<?= bin2hex(
-                    random_bytes(16)
-                ) ?>" id="random_token" name="random_token">
-                <!-- <input type="hidden" value="<php echo md5(microtime()); ?>"  name="microtime" id="microtime"  /> -->
-                <!-- <input type="hidden" value="<php echo md5(microtime()); ?>" name="action_key" id="action_key" /> -->
-
+                <input type="hidden" value="<?= bin2hex(random_bytes(16)); ?>" id="random_token" name="random_token">
+            
 
                 <!-- START PAGE CONTENT-->
                 <?php switch (strtolower($pg)) {
@@ -190,6 +169,14 @@
     <script src="media/assets/vendors/bootstrap-sweetalert/dist/sweetalert.min.js" type="text/javascript"></script>
     <!-- PAGE LEVEL PLUGINS-->
     <script src="media/assets/vendors/chart.js/dist/Chart.min.js" type="text/javascript"></script>
+    <script src="media/assets/css/bootstrap-s/js/bootstrap-select.js"></script>
+    <script src="media/assets/css/bootstrap-s/js/umd-intro.js"></script>
+    <script src="media/assets/css/bootstrap-s/js/umd-outro.js"></script>
+    <script src="media/assets/css/bootstrap-s/dist/js/bootstrap-select.js"></script>
+    <script src="media/assets/css/bootstrap-s/dist/js/bootstrap-select.js.map"></script>
+    <script src="media/assets/css/bootstrap-s/dist/js/bootstrap-select.min.js"></script>
+    <script src="media/assets/css/bootstrap-s/dist/js/bootstrap-select.min.js.map"></script>
+
     <script src="media/assets/vendors/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js" type="text/javascript"></script>
     <!-- CORE SCRIPTS-->
     <script src="media/assets/js/app.js" type="text/javascript"></script>
@@ -202,24 +189,21 @@
     <script src="media/assets/libs/flot/jquery.flot.time.js"></script>
     <script src="media/assets/libs/flot/jquery.flot.stack.js"></script>
     <script src="media/assets/libs/flot/jquery.flot.crosshair.js"></script>
-    <script src="media/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+    <script src="media/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script> 
 
     <!-- PAGE LEVEL SCRIPTS-->
     <script src="media/assets/js/scripts/dashboard_3_demo.js" type="text/javascript"></script>
     <link rel="stylesheet" href="media/assets/libs/sweet-modal/dist/min/jquery.sweet-modal.min.css" />
-    <script src="media/assets/libs/sweet-modal/dist/min/jquery.sweet-modal.min.js"></script>
-    <!-- <script src="media/assets/libs/sweetalert2/sweetalert2.min.js"></script> -->
-
-    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
-
+    <script src="media/assets/libs/sweet-modal/dist/min/jquery.sweet-modal.min.js">
+        
+    </script>
     
-
     <!-- Place this snippet where you include your JavaScript -->
     <script>
         <?php if (isset($msg, $status)) { ?>
             showToastr(`<?= $status ?>`, `<?= $msg ?>`);
         <?php } ?>
-    </script>
+    </script> 
 
 </body>
 
@@ -491,9 +475,9 @@
 <script>
     $(document).ready(function(e) {
         /*
-         * This is a dynamic search
+         * This is a dynamic search 
          * on the dashboard
-         *
+         * 
          */
         $('.searchdash').keyup(function() {
             var dashsearch = $("#searchdash2").val();
@@ -544,7 +528,12 @@
         }
 
     });
-</script>
+</script> 
+ <!-- --    <script>
+        <php if (isset($msg, $status)) { ?>
+            showToastr(`<= $status ?>`, `<= $msg ?>`);
+        <php } ?>
+    </script> -->
     <script>
     $(document).ready(function() {
         $('.selectpicker').selectpicker();

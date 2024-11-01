@@ -208,10 +208,12 @@ public function getTherapistName($therapistid)
         $remoteip = $_SERVER['REMOTE_ADDR'];
         $useragent = $_SERVER['HTTP_USER_AGENT'];
 
+        
         $query = "INSERT INTO eventlog (EVL_EVTCODE,EVL_MOD_MEMID,EVL_MON_NAME,EVL_ACTIVITIES,EVL_IP,EVL_SESSION_ID,EVL_BROWSER,EVL_RAW) VALUES (" . $this->sql->Param('a') . "," . $this->sql->Param('b') . "," . $this->sql->Param('c') . "," . $this->sql->Param('d') . "," . $this->sql->Param('e') . "," . $this->sql->Param('f') . "," . $this->sql->Param('g') . "," . $this->sql->Param('h') . ")";
 
         $stmt = $this->sql->Execute($query, array($event_type, $userid, $ufullname, $activity, $remoteip, $toinsetsession, $useragent, $ser));
     } //end
+    
     public function getSettingsValue($search_key, $input_array)
     {
         foreach ($input_array as $key) {

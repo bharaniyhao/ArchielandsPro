@@ -13,7 +13,7 @@ switch (strtolower($target)) {
         include("view/edit.php");
         break;
     case "details":
-        include("view/details.php");
+        include("view/updatedetails.php");
         break;
 
     default:

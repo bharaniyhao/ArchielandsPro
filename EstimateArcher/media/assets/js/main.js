@@ -44,40 +44,124 @@ let showAlert = (
 };
 
 let showConfirmationAlert = (
-  type = "warning",
-  msg,
-  title = "Are you sure?",
-  confirmbtnclass = "btn-warning",
-  confirmbtntext = "Yes, delete it!",
-  confirmcallbackftn
+	type = 'warning',
+	msg,
+	title = 'Are you sure?',
+	confirmbtnclass = 'btn-warning',
+	confirmbtntext = 'Yes, delete it!',
+	confirmcallbackftn
 ) => {
-  swal(
-    {
-      title: title,
-      text: msg,
-      type: type,
-      showCancelButton: true,
-      confirmButtonClass: confirmbtnclass,
-      confirmButtonText: confirmbtntext,
-      closeOnConfirm: true,
-      closeOnCancel: true,
-    },
-    function (isConfirm) {
-      isConfirm && confirmcallbackftn;
-      /*
-      if (isConfirm) {
-        showAlert(
-          "success",
-          "Deleted!",
-          "Your imaginary file has been deleted."
-        );
-      } else {
-        showAlert("error", "Cancelled", "Your imaginary file is safe :)");
-      }
-      */
-    }
-  );
+	swal(
+		{
+			title: title,
+			text: msg,
+			type: type,
+			showCancelButton: true,
+			confirmButtonClass: confirmbtnclass,
+			confirmButtonText: confirmbtntext,
+			closeOnConfirm: true,
+			closeOnCancel: true,
+		},
+		function (isConfirm) {
+			isConfirm && confirmcallbackftn();
+			/*
+            if (isConfirm) {
+              showAlert(
+                "success",
+                "Deleted!",
+                "Your imaginary file has been deleted."
+              );
+            } else {
+              showAlert("error", "Cancelled", "Your imaginary file is safe :)");
+            }
+            */
+		}
+	);
 };
+
+let showrejectAlert = (
+	// type = "warning",
+	// msg,
+	title = 'Are you sure?',
+	confirmbtnclass = 'btn-warning',
+	confirmbtntext = 'Yes, delete it!',
+	confirmcallbackftn
+) => {
+	swal(
+		{
+			title: title,
+			input: 'text', // Use text input
+			inputLabel: 'Type your message here', // Label for the textarea
+
+			textarea: true, // Set textarea to true to make it behave like a textarea
+			confirmButtonClass: confirmbtnclass,
+			confirmButtonText: confirmbtntext,
+			closeOnConfirm: true,
+			closeOnCancel: true,
+			showCancelButton: true,
+		},
+		function (isConfirm) {
+			if (isConfirm) {
+				const inputValue = document.querySelector('.swal-content__input').value; // Retrieve the value of the textarea
+				confirmcallbackftn(inputValue); // Call the callback function with the textarea value
+			}
+		}
+	);
+};
+
+function rejectSubmit(
+	title,
+	icon = 'warning',
+	message,
+	confirmbtn,
+	action,
+	key
+) {
+	Swal.fire({
+		title: title,
+		type: icon,
+		text: message,
+		input: 'text',
+		showCancelButton: true,
+		confirmButtonText: confirmbtn,
+		inputValidator: (value) => {
+			return !value && 'Please fill out this field.';
+		},
+	}).then((result) => {
+		if (result.value) {
+			var inp = result.value;
+			document.getElementById('viewpage').value = action;
+			document.getElementById('keys').value = key;
+			document.getElementById('reason').value = inp;
+			document.myform.submit();
+		}
+	});
+}
+
+function confirmSubmit(
+	title,
+	icon = 'warning',
+	message,
+	confirmbtn,
+	action,
+	key
+) {
+	Swal.fire({
+		title: title,
+		text: message,
+		type: icon,
+		showCancelButton: true,
+		confirmButtonColor: '',
+		confirmButtonText: confirmbtn,
+		closeOnConfirm: false,
+	}).then((result) => {
+		if (result.value) {
+			document.getElementById('viewpage').value = action;
+			document.getElementById('keys').value = key;
+			document.myform.submit();
+		}
+	});
+}
 
 let numberInputOnly = (inputclass) => {
   let ele = document.getElementsByClassName(inputclass);

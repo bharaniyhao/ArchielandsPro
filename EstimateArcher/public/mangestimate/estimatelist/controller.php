@@ -140,27 +140,24 @@ case "save":
     }
     break;
 
-
-
-	case "deleteuser":
+	case "deletest":
         if(!empty($keys)){
 
-			$stmtpass = $sql->Execute($sql->Prepare("SELECT CustomerName FROM Estimate WHERE estimateCode = ".$sql->Param('b')." "),array($keys));
+            $stmtpass = $sql->Execute($sql->Prepare("SELECT CustomerName FROM Estimate WHERE estimateCode = ".$sql->Param('b')." "),array($keys));
 			$obj = $stmtpass->FetchNextObject();
-			$EstimateName = $obj->CUSTOMERNAME ;
-                    print_r($keys);
+			$CustomerName = $obj->CUSTOMERNAME ;
 
-			
-			$sql->Execute("UPDATE Estimate SET Estimatestatus = '0' WHERE estimateCode = ".$sql->Param('f')." ", array($keys));
+			$sql->Execute("UPDATE Estimate SET Estimatestatus = '-1' WHERE estimateCode = ".$sql->Param('f')." ", array($keys));
 			print $sql->ErrorMsg();	
 
-			$msg = "Estimate updated successfully.";
+			$msg = "Estimate $CustomerName Deleted successfully.";
 			$status = "success";
 
-			$activity = 'User with username '.$CustomerName.' deleted ';
-			$engine->setEventLog("006",$activity);
+			$activity = 'User with username '.$EstimateName.' deleted ';
+			$engine->setEventLog("016",$activity);
 		}
 	break;
+
 	case "reset":
 		$fdsearch = "";
 	break;
@@ -168,11 +165,11 @@ case "save":
 //Get all users
 if (empty($fdsearch)) {
 
-$query = "SELECT * FROM Estimate WHERE Estimatestatus IN ( '1','0','2') ORDER BY id DESC";
+$query = "SELECT * FROM Estimate WHERE Estimatestatus IN ('1', '2') ORDER BY id DESC";
 	$input = array();
 } else {
 
-	$query = "SELECT * FROM Estimate WHERE Estimatestatus IN ('1','0','2') AND ( CustomerName LIKE " . $sql->Param('a') . " OR invoiceNumber LIKE " . $sql->Param('b')  . " ) ORDER BY id  DESC";
+	$query = "SELECT * FROM Estimate WHERE Estimatestatus IN ('1','2') AND ( CustomerName LIKE " . $sql->Param('a') . " OR invoiceNumber LIKE " . $sql->Param('b')  . " ) ORDER BY id  DESC";
 	$input = array($fdsearch . "%", $fdsearch . "%");
 }
 

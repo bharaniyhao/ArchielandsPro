@@ -47,76 +47,78 @@ ini_set('display_errors', 1);
             </div>
             <div class="table-responsive">
     <table class="table table-striped table-bordered table-hover" id="example-table">
-        <thead>
-            <tr>
-                <th> # </th>
-                <!-- <th> estimateID</th> -->
-                <th> Estimator Name </th>
-                <th> Phone Number </th> 
-                <th> Category </th>
-                <th> Invoice Number</th>
-                <!-- <th> Category </th> -->
-                <th> Total Amount </th>
-                <th> Status </th>
-                <th> Actions </th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php 
-            	$num = 1;
-				
-			if($paging->total_rows > 0){
-				$page = (empty($page))? 1:$page;
-			 $num = (isset($page))? ($limit*($page-1))+1:1;
-             foreach ($rs as $val){
-				// $brchname = $engine->getBranch($val['USR_BRCHID']); {
-                    // var_dump($result);
-                      $status_name = '';
-                    $status_color = '';
+    <thead>
+        <tr>
+            <th> # </th>
+            <!-- <th> estimateID</th> -->
+            <th> Estimator Name </th>
+            <th> Phone Number </th> 
+            <th> Category </th>
+            <th> Invoice Number</th>
+            <!-- <th> Category </th> -->
+            <th> Total Amount </th>
+            <th> Status </th>
+            <th> Actions </th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php 
+    $num = 1;
+    
+    if ($paging->total_rows > 0) {
+        $page = isset($page) && is_numeric($page) ? (int)$page : 1;
+        $limit = isset($limit) && is_numeric($limit) ? (int)$limit : 10; // Default limit if not set or invalid
+        $num = ($limit * ($page - 1)) + 1;
 
-                    if ($val['Estimatestatus'] == 2) {
-                        $status_name = 'Paid';
-                        $status_color = 'success';
-                    } elseif ($val['Estimatestatus'] == 1) {
-                        $status_name = 'Proccessing';
-                        $status_color = 'info';
-                    } elseif ($val['Estimatestatus'] == 0) {
-                        $status_name = 'Disable';
-                        $status_color = 'danger';
-                    }
-                    echo '<tr>
-                        <td>'.$num++.'</td>
-                        <td>'.$val['customerName'].'</td>
-                        <td>'.$val['phoneNumber'].'</td>
-                        <td>'.$val['CategoryName'].' </td>
-                        <td>'.$val['invoiceNumber'].'</td>
-                        <td>Gh₵'.$val['totalAmount'].'</td>
-                        <td><span class="badge badge-' . $status_color . '">' . $status_name . '</span></td>
-                        <td>
-                            <div align="center">
+        foreach ($rs as $val) {
+            $status_name = '';
+            $status_color = '';
 
-<button type="submit" class="btn btn-default btn-sm btn-info" data-toggle="tooltip" data-original-title="Edit" onclick="document.getElementById(\'keys\').value = \'' . $val['estimateCode'] . '\';document.getElementById(\'target\').value = \'details\';document.getElementById(\'viewpage\').value = \'Findetails\';">
-                                    <i class="fa fa-eye"></i> View Details
-                                </button>
-<button type="submit" class="btn btn-default btn-sm btn-info" data-toggle="tooltip" data-original-title="Edit" onclick="document.getElementById(\'keys\').value = \'' . $val['estimateCode'] . '\';document.getElementById(\'target\').value = \'update\';document.getElementById(\'viewpage\').value = \'Findetails\';">
-    <i class="fa fa-pencil"></i> Update Estimate
-</button>
-
-
-<button type="button" class="btn btn-danger text-white" role="button" data-toggle="tooltip" data-original-title="Terminate" onclick="showConfirmationAlert(\'warning\', \'Are you sure you want to Delete this Estimate?\', \'Terminate Estimate\' , \'btn-success\' ,\'Yes\' ,function(){ document.getElementById(\'view\').value=\'\' ;document.getElementById(\'keys\').value = \'' . $val['estimateCode'] . '\';document.getElementById(\'viewpage\').value=\'deleteuser\';document.myform.submit(); })">
-                                    <i class="fa fa-trash"></i> Delete
-                                </button>
-                                
-
-                
-                            </div>
-                        </td>';
-                }
+            if ($val['Estimatestatus'] == 2) {
+                $status_name = 'Paid';
+                $status_color = 'success';
+            } elseif ($val['Estimatestatus'] == 1) {
+                $status_name = 'Processing';
+                $status_color = 'info';
+            } elseif ($val['Estimatestatus'] == 0) {
+                $status_name = 'Disable';
+                $status_color = 'danger';
             }
-        // }
-            ?>
-        </tbody>
-    </table>
+
+            echo '<tr>
+                <td>'.$num++.'</td>
+                <td>'.$val['customerName'].'</td>
+                <td>'.$val['phoneNumber'].'</td>
+                <td>'.$val['CategoryName'].'</td>
+                <td>'.$val['invoiceNumber'].'</td>
+                <td>Gh₵'.$val['totalAmount'].'</td>
+                <td><span class="badge badge-' . $status_color . '">' . $status_name . '</span></td>
+                <td>
+                    <div align="center">
+                        <button type="submit" class="btn btn-default btn-sm btn-info" data-toggle="tooltip" data-original-title="View Details" onclick="document.getElementById(\'keys\').value = \'' . $val['estimateCode'] . '\';document.getElementById(\'target\').value = \'details\';document.getElementById(\'viewpage\').value = \'Findetails\';">
+                            <i class="fa fa-eye"></i> View Details
+                        </button>
+
+                        <button type="submit" class="btn btn-default btn-sm btn-info" data-toggle="tooltip" data-original-title="Update Estimate" onclick="document.getElementById(\'keys\').value = \'' . $val['estimateCode'] . '\';document.getElementById(\'target\').value = \'details\';document.getElementById(\'viewpage\').value = \'Findetails\';">
+                            <i class="fa fa-pencil"></i> Update Estimate
+                        </button>
+                        <button type="button" class="btn btn-danger text-white" role="button" data-toggle="tooltip" data-original-title="Delete" onclick="showConfirmationAlert(\'warning\', \'Are you sure you want to Delete this Estimate?\', \'Terminate Estimate\' , \'btn-success\' ,\'Yes\' ,function()
+                        
+                        { document.getElementById(\'view\').value=\'\'; document.getElementById(\'keys\').value = \'' . $val['estimateCode'] . '\';document.getElementById(\'viewpage\').value=\'deletest\';document.myform.submit(); })">
+                            <i class="fa fa-trash"></i> Delete
+                        </button>
+                        
+                        
+                    </div>
+                </td>
+            </tr>';
+        }
+    }
+?>
+
+    </tbody>             
+</table>
+
 </div>
 
                             </div>

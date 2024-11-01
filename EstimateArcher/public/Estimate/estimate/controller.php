@@ -140,22 +140,21 @@ case "save":
     }
     break;
 
-	case "deleteuser":
+	case "deletest":
         if(!empty($keys)){
 
-			$stmtpass = $sql->Execute($sql->Prepare("SELECT CustomerName FROM Estimate WHERE estimateCode = ".$sql->Param('b')." "),array($keys));
+            $stmtpass = $sql->Execute($sql->Prepare("SELECT CustomerName FROM Estimate WHERE estimateCode = ".$sql->Param('b')." "),array($keys));
 			$obj = $stmtpass->FetchNextObject();
-			$EstimateName = $obj->CUSTOMERNAME ;
-                    print_r($keys);
+			$CustomerName = $obj->CUSTOMERNAME ;
 
-			$sql->Execute("UPDATE Estimate SET Estimatestatus = '0' WHERE estimateCode = ".$sql->Param('f')." ", array($keys));
+			$sql->Execute("UPDATE Estimate SET Estimatestatus = '-1' WHERE estimateCode = ".$sql->Param('f')." ", array($keys));
 			print $sql->ErrorMsg();	
 
-			$msg = "Estimate updated successfully.";
+			$msg = "Estimate $CustomerName Deleted successfully.";
 			$status = "success";
 
-			// $activity = 'User with username '.$EstimateName.' deleted ';
-			// $engine->setEventLog("006",$activity);
+			$activity = 'User with username '.$EstimateName.' deleted ';
+			$engine->setEventLog("016",$activity);
 		}
 	break;
 
